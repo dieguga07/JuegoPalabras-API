@@ -1,0 +1,21 @@
+version: "3"
+services:
+  mysql:
+    image: 'mysql:latest'
+    environment:
+      - 'MYSQL_DATABASE=JuegoPalabras'
+      - 'MYSQL_PASSWORD=secret'
+      - 'MYSQL_ROOT_PASSWORD=verysecret'
+      - 'MYSQL_USER=myuser'
+    volumes:
+      - ./initSQL:/docker-entrypoint-initdb.d
+    ports:
+      - '3306:3306'
+
+
+  adminer:
+      image: adminer
+      ports:
+        - 8888:8080
+
+
